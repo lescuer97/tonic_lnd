@@ -7,7 +7,7 @@ fn main() -> std::io::Result<()> {
             let mut lnd_rpc_dir = PathBuf::from(lnd_repo_path);
             lnd_rpc_dir.push("lnrpc");
             lnd_rpc_dir
-        },
+        }
         None => PathBuf::from("vendor"),
     };
 
@@ -34,6 +34,47 @@ fn main() -> std::io::Result<()> {
         .build_client(true)
         .build_server(false)
         .format(false)
+        .type_attribute(
+            ".lnrpc.ListPaymentsResponse",
+            "#[derive(serde::Serialize)]",
+        )
+        .type_attribute(
+            ".lnrpc.Payment",
+            "#[derive(serde::Serialize)]",
+        )
+        .type_attribute(
+            ".lnrpc.HTLCAttempt",
+            "#[derive(serde::Serialize)]",
+        )
+        .type_attribute(".lnrpc.Failure", "#[derive(serde::Serialize)]")
+        .type_attribute(
+            ".lnrpc.HTLC",
+            "#[derive(serde::Serialize)]",
+        )
+        .type_attribute(".lnrpc.Feature", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.Chain", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.GetInfoResponse", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.Channel", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.ConnectPeerResponse", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.ChannelPoint", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.ChannelConstraints", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.HTLC", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.NewAddressResponse", "#[derive(serde::Serialize)]")
+        .type_attribute(
+            ".lnrpc.WalletBalanceResponse",
+            "#[derive(serde::Serialize)]",
+        )
+        .type_attribute(".lnrpc.WalletAccountBalance", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.ListPeersResponse", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.Peer", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.TimestampedError", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.AddInvoiceResponse", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.SendResponse", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.Route", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.Hop", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.MPPRecord", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.AMPRecord", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.ChannelUpdate", "#[derive(serde::Serialize)]")
         .compile(&proto_paths, &[dir])?;
     Ok(())
 }
