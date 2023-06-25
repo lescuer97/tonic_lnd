@@ -60,6 +60,13 @@ fn main() -> std::io::Result<()> {
         .type_attribute(".lnrpc.ChannelConstraints", "#[derive(serde::Serialize)]")
         .type_attribute(".lnrpc.HTLC", "#[derive(serde::Serialize)]")
         .type_attribute(".lnrpc.NewAddressResponse", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.ListInvoiceResponse", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.AMPInvoiceState", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.InvoiceHTLC", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.Invoice", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.AMP", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.RouteHint", "#[derive(serde::Serialize)]")
+        .type_attribute(".lnrpc.HopHint", "#[derive(serde::Serialize)]")
         .type_attribute(
             ".lnrpc.WalletBalanceResponse",
             "#[derive(serde::Serialize)]",
